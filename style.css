@@ -1,0 +1,327 @@
+:root {
+    color-scheme: light dark;
+
+    --cor-fundo: #f1f5f9;
+    --cor-card: #ffffff;
+    --cor-texto: #0f172a;
+    --cor-texto-suave: #64748b;
+    --cor-borda: #e2e8f0;
+    --cor-destaque: #2563eb;
+    --cor-destaque-escura: #1d4ed8;
+    --cor-receita: #15803d;
+    --cor-despesa: #b91c1c;
+    --raio: 14px;
+    --sombra: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-fundo: #0b1220;
+        --cor-card: #151e2e;
+        --cor-texto: #e5e9f0;
+        --cor-texto-suave: #94a3b8;
+        --cor-borda: #263247;
+        --cor-receita: #4ade80;
+        --cor-despesa: #f87171;
+        --sombra: none;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* ---------- Cabeçalho ---------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--cor-destaque);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Layout geral ---------- */
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem 1rem 2rem;
+    display: grid;
+    gap: 1rem;
+}
+
+section {
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 1rem;
+    box-shadow: var(--sombra);
+}
+
+section h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+}
+
+/* ---------- Filtro de mês ---------- */
+#filtro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.5rem;
+}
+
+#filtro strong {
+    flex: 1;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#filtro button {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+#filtro button:hover {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+/* ---------- Resumo ---------- */
+#resumo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+#resumo div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+}
+
+#resumo span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cor-texto-suave);
+}
+
+#resumo strong {
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+}
+
+#resumo div:first-child {
+    grid-column: 1 / -1;
+    background: var(--cor-destaque);
+    border-color: transparent;
+    color: #fff;
+}
+
+#resumo div:first-child span {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#resumo div:first-child strong {
+    font-size: 2rem;
+}
+
+#total-receitas {
+    color: var(--cor-receita);
+}
+
+#total-despesas {
+    color: var(--cor-despesa);
+}
+
+/* ---------- Formulário ---------- */
+form {
+    display: grid;
+    gap: 0.75rem;
+}
+
+input, select, button {
+    font: inherit;
+    color: inherit;
+    padding: 0.65rem 0.8rem;
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    transition: border-color 0.15s, background-color 0.15s, color 0.15s, transform 0.1s;
+}
+
+::placeholder {
+    color: var(--cor-texto-suave);
+}
+
+input:focus, select:focus {
+    border-color: var(--cor-destaque);
+}
+
+input:focus-visible, select:focus-visible, button:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+button[type="submit"] {
+    background: var(--cor-destaque);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+}
+
+button[type="submit"]:hover {
+    background: var(--cor-destaque-escura);
+}
+
+/* ---------- Lista ---------- */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+ul:empty::before {
+    content: "Nenhum lançamento neste mês.";
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    color: var(--cor-texto-suave);
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
+    background: var(--cor-fundo);
+    border-left: 4px solid transparent;
+    border-radius: 10px;
+}
+
+li.receita {
+    border-left-color: var(--cor-receita);
+}
+
+li.despesa {
+    border-left-color: var(--cor-despesa);
+}
+
+li .info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+li .info strong {
+    overflow-wrap: anywhere;
+}
+
+li .info small {
+    color: var(--cor-texto-suave);
+}
+
+li .valor {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+li.receita .valor {
+    color: var(--cor-receita);
+}
+
+li.despesa .valor {
+    color: var(--cor-despesa);
+}
+
+li button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border-color: transparent;
+    color: var(--cor-texto-suave);
+}
+
+li button:hover {
+    border-color: var(--cor-despesa);
+    color: var(--cor-despesa);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+#btn-instalar {
+    margin-top: 0.5rem;
+    background: #fff;
+    color: var(--cor-destaque);
+    border: none;
+    font-weight: 600;
+}
+
+/* ---------- Telas maiores ---------- */
+@media (min-width: 640px) {
+    form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form .campo-largo {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ---------- Acessibilidade: movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

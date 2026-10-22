@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Controle Financeiro</h1>
+        <button type="button" id="btn-instalar" hidden>Instalar app</button>
+    </header>
+
+    <main>
+        <section id="filtro">
+            <button type="button" id="mes-anterior" aria-label="Mês anterior">‹</button>
+            <strong id="mes-titulo" aria-live="polite">Mês</strong>
+            <button type="button" id="mes-proximo" aria-label="Próximo mês">›</button>
+        </section>
+
+        <!-- Bloco 1: resumo do mês -->
+         <section id="resumo">
+            <div><span>Saldo</span><strong id="saldo">R$ 0,00</strong></div>
+            <div><span>Receitas</span><strong id="total-receitas">R$ 0,00</strong></div>
+            <div><span>Despesas</span><strong id="total-despesas">R$ 0,00</strong></div>
+         </section>
+
+         <!-- Bloco 2: formulário -->
+          <section id="novo-lancamento">
+            <h2>Novo Lançamento</h2>
+            <form id="form-lancamento">
+                <select id="tipo">
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select>
+                <select id="categoria">
+                    <option>Alimentação</option>
+                    <option>Transporte</option>
+                    <option>Moradia</option>
+                    <option>Lazer</option>
+                    <option>Outros</option>
+                </select>
+                <input type="text" id="descricao" placeholder="Descrição" required>
+                <input type="number" id="valor" placeholder="Valor (R$)" step="0.01" min="0.01" required>
+                <input type="date" id="data" required>
+                <button type="submit" class="campo-largo">Adicionar</button>
+            </form>
+          </section>
+
+          <!-- Bloco 3: lista -->
+           <section id="lancamentos">
+            <h2>Lançamentos</h2>
+            <ul id="lista"></ul>
+           </section>
+
+           <script src="script.js"></script>
+    </main>
+</body>
+</html>
