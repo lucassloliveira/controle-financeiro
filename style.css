@@ -215,6 +215,17 @@ button[type="submit"]:hover {
     background: var(--cor-destaque-escura);
 }
 
+.campo {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.campo span {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cor-texto-suave);
+}
+
 /* ---------- Lista ---------- */
 ul {
     list-style: none;

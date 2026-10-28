@@ -9,6 +9,7 @@
     <link rel="icon" href="icons/icon-192.png" type="image/png">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Controle financeiro pessoal: registre receitas e despesas, acompanhe o saldo do mês e use mesmo sem internet.">
 </head>
 <body>
     <header>
@@ -34,20 +35,40 @@
           <section id="novo-lancamento">
             <h2>Novo Lançamento</h2>
             <form id="form-lancamento">
-                <select id="tipo">
+                <label class="campo">
+                    <span>Tipo</span>
+                    <select id="tipo">
                     <option value="receita">Receita</option>
                     <option value="despesa">Despesa</option>
-                </select>
-                <select id="categoria">
+                    </select>
+                </label>
+
+                <label class="campo">
+                    <span>Categoria</span>
+                    <select id="categoria">
                     <option>Alimentação</option>
                     <option>Transporte</option>
                     <option>Moradia</option>
                     <option>Lazer</option>
                     <option>Outros</option>
-                </select>
-                <input type="text" id="descricao" placeholder="Descrição" required>
-                <input type="number" id="valor" placeholder="Valor (R$)" step="0.01" min="0.01" required>
-                <input type="date" id="data" required>
+                    </select>
+                </label>
+
+                <label class="campo campo-largo">
+                    <span>Descrição</span>
+                    <input type="text" id="descricao" placeholder="Ex.: Mercado" required>
+                </label>
+
+                <label class="campo">
+                    <span>Valor (R$)</span>
+                    <input type="number" id="valor" placeholder="0,00" step="0.01" min="0.01" required>
+                </label>
+
+                <label class="campo">
+                    <span>Data</span>
+                    <input type="date" id="data" required>
+                </label>
+
                 <button type="submit" class="campo-largo">Adicionar</button>
             </form>
           </section>
